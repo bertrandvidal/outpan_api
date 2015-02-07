@@ -1,7 +1,7 @@
 Outpan.com API
 ==============
 
-|PyPI latest version badge| |PyPI monthly downloads|
+|PyPI latest version badge|
 
 Python client for the `Outpan.com
 API <http://www.outpan.com/developers.php>`__
@@ -40,7 +40,7 @@ test we'll use the test barcode ``078915030900``.
 
 This call will return the product's data as a ``dict``:
 
-.. code:: json
+.. code:: javascript
 
     {'attributes': {'Care': 'Dishwasher safe',
                     'Colors': 'White',
@@ -100,7 +100,5 @@ or using ``easy_install``:
 
     easy_install outpan
 
-.. |PyPI latest version badge| image:: https://pypip.in/v/outpan/badge.png
-   :target: https://pypi.python.org/pypi/outpan
-.. |PyPI monthly downloads| image:: https://pypip.in/d/outpan/badge.png
+.. |PyPI latest version badge| image:: https://badge.fury.io/py/outpan.svg
    :target: https://pypi.python.org/pypi/outpan

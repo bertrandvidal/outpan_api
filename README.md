@@ -1,7 +1,7 @@
 Outpan.com API
 ==============
 
-[![PyPI latest version badge][pypi_version]][pypi_link] [![PyPI monthly downloads][pypi_downloads]][pypi_link]
+[![PyPI latest version badge][pypi_version]][pypi_link]
 
 Python client for the [Outpan.com API][outpan_api]
 
@@ -35,7 +35,7 @@ api.get_product("078915030900")
 
 This call will return the product's data as a `dict`:
 
-```json
+```javascript
 {'attributes': {'Care': 'Dishwasher safe',
                 'Colors': 'White',
                 'Manufacturer': 'Progressive International',
@@ -96,5 +96,4 @@ easy_install outpan
 [outpan_api]: http://www.outpan.com/developers.php
 [outpan_register]: http://www.outpan.com/index.php
 [pypi_link]: https://pypi.python.org/pypi/outpan "outpan on PyPI"
-[pypi_version]: https://pypip.in/v/outpan/badge.png "PyPI latest version"
-[pypi_downloads]: https://pypip.in/d/outpan/badge.png "PyPI monthly downloads"
+[pypi_version]: https://badge.fury.io/py/outpan.svg "PyPI latest version"
