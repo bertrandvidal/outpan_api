@@ -3,12 +3,12 @@ Outpan.com API
 
 [![PyPI latest version badge][pypi_version]][pypi_link] [![PyPI monthly downloads][pypi_downloads]][pypi_link]
 
-Python client for the [![Outpan.com API][outpan_api]]
+Python client for the [Outpan.com API][outpan_api]
 
 Usage
 -----
 
-You'll first need to [![create an account][outpan_register]] and get your API key.
+You'll first need to [create an account][outpan_register] and get your API key.
 
 Once you have your API key and the package is installed - see below - you are
 set and ready to go.

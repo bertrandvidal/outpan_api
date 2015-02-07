@@ -3,12 +3,14 @@ Outpan.com API
 
 |PyPI latest version badge| |PyPI monthly downloads|
 
-Python client for the [|Outpan.com API|\ ]
+Python client for the `Outpan.com
+API <http://www.outpan.com/developers.php>`__
 
 Usage
 -----
 
-You'll first need to [|create an account|\ ] and get your API key.
+You'll first need to `create an
+account <http://www.outpan.com/index.php>`__ and get your API key.
 
 Once you have your API key and the package is installed - see below -
 you are set and ready to go.
@@ -102,5 +104,3 @@ or using ``easy_install``:
    :target: https://pypi.python.org/pypi/parse_this
 .. |PyPI monthly downloads| image:: https://pypip.in/d/parse_this/badge.png
    :target: https://pypi.python.org/pypi/parse_this
-.. |Outpan.com API| target:: http://www.outpan.com/developers.php
-.. |create an account| target:: http://www.outpan.com/index.php
