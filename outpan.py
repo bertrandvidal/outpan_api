@@ -52,7 +52,7 @@ class OutpanApi(object):
         self._api_key = api_key
 
     def _get_params(self, params):
-        """Returns the given parameters extend with the api key parameter.
+        """Returns the given parameters extended with the api key parameter.
 
         Args:
             params -- parameters of the request you want to extend
@@ -75,8 +75,9 @@ class OutpanApi(object):
         Args:
             barcode -- the barcode you are looking for
         Returns:
-            A dictionary contains the product data. It could be mostly empty
-            if outpan doesn't have data for the product
+            A dictionary containing the product data. It could be mostly empty
+            if outpan doesn't have data for the product, it is up to the caller
+            to verify the data
         """
         params = self._get_params({"barcode": barcode})
         full_url = self._get_url("get-product.php")
@@ -111,6 +112,9 @@ class OutpanApi(object):
             attr_value -- value of the attribute to add/edit
         Note:
             If the attribute already exists its value will be replaced
+        Returns:
+            Because the content of the request is empty the decorated used on
+            this method will return None
         """
         params = self._get_params({"barcode": barcode, "attr_name": attr_name,
                                    "attr_value": attr_value})
