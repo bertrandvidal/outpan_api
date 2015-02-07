@@ -19,7 +19,8 @@ setup(
         "Intended Audience :: Developers",
         "Intended Audience :: Information Technology",
         "Operating System :: OS Independent",
-        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 3",
     ],
     install_requires = [
         "requests",
