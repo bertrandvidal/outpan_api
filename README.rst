@@ -100,7 +100,7 @@ or using ``easy_install``:
 
     easy_install outpan
 
-.. |PyPI latest version badge| image:: https://pypip.in/v/parse_this/badge.png
-   :target: https://pypi.python.org/pypi/parse_this
-.. |PyPI monthly downloads| image:: https://pypip.in/d/parse_this/badge.png
-   :target: https://pypi.python.org/pypi/parse_this
+.. |PyPI latest version badge| image:: https://pypip.in/v/outpan/badge.png
+   :target: https://pypi.python.org/pypi/outpan
+.. |PyPI monthly downloads| image:: https://pypip.in/d/outpan/badge.png
+   :target: https://pypi.python.org/pypi/outpan

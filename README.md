@@ -95,6 +95,6 @@ easy_install outpan
 
 [outpan_api]: http://www.outpan.com/developers.php
 [outpan_register]: http://www.outpan.com/index.php
-[pypi_link]: https://pypi.python.org/pypi/parse_this "parse_this on PyPI"
-[pypi_version]: https://pypip.in/v/parse_this/badge.png "PyPI latest version"
-[pypi_downloads]: https://pypip.in/d/parse_this/badge.png "PyPI monthly downloads"
+[pypi_link]: https://pypi.python.org/pypi/outpan "outpan on PyPI"
+[pypi_version]: https://pypip.in/v/outpan/badge.png "PyPI latest version"
+[pypi_downloads]: https://pypip.in/d/outpan/badge.png "PyPI monthly downloads"
