@@ -85,6 +85,32 @@ You can also edit or create a product's attribute using the method
 Note that this method does return anything and will replace any existing
 attribute.
 
+From the command line
+---------------------
+
+Thanks to the awesome python package
+`parse\_this <https://github.com/bertrandvidal/parse_this>`__ the Outpan
+API is accessible directly from the command line!!!
+
+.. code:: bash
+
+    python outpan.py --help
+
+will give you the help message to know how to use it.
+
+A quick overview of the three methods we've already talked about:
+
+.. code:: bash
+
+    python outpan.py 123456789 add-edit-product-name 0000000000000 new_product
+    python outpan.py 123456789 get-product 0000000000000
+    python outpan.py 123456789 add-edit-product-attribute 0000000000000 Origin France
+
+These three command lines use the (fake) API key 123456789 to 1 Create a
+new product with barcode='0000000000000' and name='new\_product' 2
+Retrieve the newly created product and make sure it exists 3 Add an
+attribute 'Origin' with the value 'France' for this new product
+
 INSTALLING OUTPAN
 -----------------
 
