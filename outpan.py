@@ -1,4 +1,7 @@
+from argparse import ArgumentParser
 import requests
+
+from parse_this import create_parser, Self
 
 
 class OutpanException(Exception):
@@ -70,6 +73,7 @@ class OutpanApi(object):
         """
         return "%s/%s" % (self.__class__._API_URL, resource)
 
+    @create_parser(Self, str, params_delim="--")
     def get_product(self, barcode):
         """Returns the product data specified by the barcode.
 
@@ -85,6 +89,7 @@ class OutpanApi(object):
         response = requests.get(full_url, params=params)
         return _check_request_status(response)
 
+    @create_parser(Self, str, str, params_delim="--")
     def add_edit_product_name(self, barcode, name):
         """Add or Edit the name of the product specify by the barcode.
 
@@ -104,6 +109,7 @@ class OutpanApi(object):
         response = requests.get(full_url, params=params)
         return _check_request_status(response)
 
+    @create_parser(Self, str, str, str, params_delim="--")
     def add_edit_product_attribute(self, barcode, attr_name, attr_value):
         """Add or edit an attribute to the product defined by the barcode.
 
@@ -123,3 +129,35 @@ class OutpanApi(object):
         response = requests.get(full_url, params=params)
         return _check_request_status(response)
 
+
+if __name__ == "__main__":
+    outpan_parser = ArgumentParser(description="Allows you to access the Outpan.com API.")
+    outpan_parser.add_argument("api_key", help="API key provided on your profile page.")
+    sub_parsers = outpan_parser.add_subparsers(title="Outpan API methods",
+                                               description="Methods allowed by the Outpan API",
+                                               dest="method")
+    get_product_parser = OutpanApi.get_product.parser
+    sub_parsers.add_parser("get-product", parents=[get_product_parser],
+                           add_help=False,
+                           description=get_product_parser.description)
+    add_edit_name_parser = OutpanApi.add_edit_product_name.parser
+    sub_parsers.add_parser("add-edit-name",
+                           parents=[add_edit_name_parser],
+                           add_help=False,
+                           description=add_edit_name_parser.description)
+    add_edit_attr_parser = OutpanApi.add_edit_product_attribute.parser
+    sub_parsers.add_parser("add-edit-attr",
+                           parents=[add_edit_attr_parser],
+                           add_help=False,
+                           description=add_edit_attr_parser.description)
+    namespace = outpan_parser.parse_args()
+    outpan_api = OutpanApi(namespace.api_key)
+    if namespace.method == "get-product":
+        print(outpan_api.get_product(namespace.barcode))
+    if namespace.method == "add-edit-name":
+        print(outpan_api.add_edit_product_name(namespace.barcode,
+                                               namespace.name))
+    if namespace.method == "add-edit-attr":
+        print(outpan_api.add_edit_product_attribute(namespace.barcode,
+                                                    namespace.attr_name,
+                                                    namespace.attr_value))
