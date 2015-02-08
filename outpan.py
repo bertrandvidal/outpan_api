@@ -39,7 +39,14 @@ class OutpanApi(object):
 
     _API_URL = "http://www.outpan.com/api"
 
-    def __init__(self, api_key):
+    def __init__(self, api_key=None):
+        """
+        Args:
+            api_key -- the api key provided by outpan when you register
+        """
+        self._api_key = api_key
+
+    def set_api_key(self, api_key):
         """
         Args:
             api_key -- the api key provided by outpan when you register
