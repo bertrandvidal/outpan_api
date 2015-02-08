@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 import requests
 
-from parse_this import create_parser, Self
+from parse_this import create_parser, Self, parse_class
 
 
 class OutpanException(Exception):
@@ -31,6 +31,7 @@ def _check_request_status(response):
         return data
 
 
+@parse_class
 class OutpanApi(object):
     """Access the Outpan API.
 
@@ -42,14 +43,8 @@ class OutpanApi(object):
 
     _API_URL = "http://www.outpan.com/api"
 
-    def __init__(self, api_key=None):
-        """
-        Args:
-            api_key -- the api key provided by outpan when you register
-        """
-        self._api_key = api_key
-
-    def set_api_key(self, api_key):
+    @create_parser(Self, str)
+    def __init__(self, api_key):
         """
         Args:
             api_key -- the api key provided by outpan when you register
@@ -79,6 +74,7 @@ class OutpanApi(object):
 
         Args:
             barcode -- the barcode you are looking for
+
         Returns:
             A dictionary containing the product data. It could be mostly empty
             if outpan doesn't have data for the product, it is up to the caller
@@ -96,10 +92,12 @@ class OutpanApi(object):
         Args:
             barcode -- the barcode of the product you want to add/edit
             name -- name of the product you want to add/edit
+
         Note:
             Whether the barcode has already a name associateed with it or not,
             it will be replaced with the new name submitted by the API request.
             If the barcode exists the name will be replaced.
+
         Returns:
             Because the content of the request is empty the decorator used on
             this method will return None
@@ -117,8 +115,10 @@ class OutpanApi(object):
             barcode -- barcode of the object you want to edit
             attr_name -- name of the attribute to add/edit
             attr_value -- value of the attribute to add/edit
+
         Note:
             If the attribute already exists its value will be replaced
+
         Returns:
             Because the content of the request is empty the decorated used on
             this method will return None
@@ -131,33 +131,14 @@ class OutpanApi(object):
 
 
 if __name__ == "__main__":
-    outpan_parser = ArgumentParser(description="Allows you to access the Outpan.com API.")
-    outpan_parser.add_argument("api_key", help="API key provided on your profile page.")
-    sub_parsers = outpan_parser.add_subparsers(title="Outpan API methods",
-                                               description="Methods allowed by the Outpan API",
-                                               dest="method")
-    get_product_parser = OutpanApi.get_product.parser
-    sub_parsers.add_parser("get-product", parents=[get_product_parser],
-                           add_help=False,
-                           description=get_product_parser.description)
-    add_edit_name_parser = OutpanApi.add_edit_product_name.parser
-    sub_parsers.add_parser("add-edit-name",
-                           parents=[add_edit_name_parser],
-                           add_help=False,
-                           description=add_edit_name_parser.description)
-    add_edit_attr_parser = OutpanApi.add_edit_product_attribute.parser
-    sub_parsers.add_parser("add-edit-attr",
-                           parents=[add_edit_attr_parser],
-                           add_help=False,
-                           description=add_edit_attr_parser.description)
-    namespace = outpan_parser.parse_args()
+    namespace = OutpanApi.parser.parse_args()
     outpan_api = OutpanApi(namespace.api_key)
     if namespace.method == "get-product":
         print(outpan_api.get_product(namespace.barcode))
-    if namespace.method == "add-edit-name":
+    if namespace.method == "add-edit-product-name":
         print(outpan_api.add_edit_product_name(namespace.barcode,
                                                namespace.name))
-    if namespace.method == "add-edit-attr":
+    if namespace.method == "add-edit-product-attribute":
         print(outpan_api.add_edit_product_attribute(namespace.barcode,
                                                     namespace.attr_name,
                                                     namespace.attr_value))
