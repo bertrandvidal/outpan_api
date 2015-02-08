@@ -1,4 +1,3 @@
-from functools import wraps
 import requests
 
 
@@ -6,31 +5,27 @@ class OutpanException(Exception):
     """Exception raised when a requests fails."""
 
 
-def check_request_status(func):
-    """Decorator for OutpanAPI method to check if an error occured.
+def _check_request_status(response):
+    """Help method to check if an error occured.
 
     Args:
-        func -- the function to be decorated
+        response -- API server response
     """
-    @wraps(func)
-    def decorated(*args, **kwargs):
-        response = func(*args, **kwargs)
-        if not response.content:
-            # Some method return an empty string we just return None
-            return None
-        try:
-            data = response.json()
-        except ValueError:
-            # We couldn't decode a json object we just return the
-            # response object
-            return response
-        else:
-            # We raise if an error occurred, if not we return the json data
-            if "error" in data:
-                raise OutpanException("%(message)s - code: %(code)s"
-                                      % data["error"])
-            return data
-    return decorated
+    if not response.content:
+        # Some method return an empty string we just return None
+        return None
+    try:
+        data = response.json()
+    except ValueError:
+        # We couldn't decode a json object we just return the
+        # response object
+        return response
+    else:
+        # We raise if an error occurred, if not we return the json data
+        if "error" in data:
+            raise OutpanException("%(message)s - code: %(code)s"
+                                  % data["error"])
+        return data
 
 
 class OutpanApi(object):
@@ -68,7 +63,6 @@ class OutpanApi(object):
         """
         return "%s/%s" % (self.__class__._API_URL, resource)
 
-    @check_request_status
     def get_product(self, barcode):
         """Returns the product data specified by the barcode.
 
@@ -81,9 +75,9 @@ class OutpanApi(object):
         """
         params = self._get_params({"barcode": barcode})
         full_url = self._get_url("get-product.php")
-        return requests.get(full_url, params=params)
+        response = requests.get(full_url, params=params)
+        return _check_request_status(response)
 
-    @check_request_status
     def add_edit_product_name(self, barcode, name):
         """Add or Edit the name of the product specify by the barcode.
 
@@ -100,9 +94,9 @@ class OutpanApi(object):
         """
         params = self._get_params({"barcode": barcode, "name": name})
         full_url = self._get_url("edit-name.php")
-        return requests.get(full_url, params=params)
+        response = requests.get(full_url, params=params)
+        return _check_request_status(response)
 
-    @check_request_status
     def add_edit_product_attribute(self, barcode, attr_name, attr_value):
         """Add or edit an attribute to the product defined by the barcode.
 
@@ -119,5 +113,6 @@ class OutpanApi(object):
         params = self._get_params({"barcode": barcode, "attr_name": attr_name,
                                    "attr_value": attr_value})
         full_url = self._get_url("edit-attr.php")
-        return requests.get(full_url, params=params)
+        response = requests.get(full_url, params=params)
+        return _check_request_status(response)
 
