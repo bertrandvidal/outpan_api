@@ -85,7 +85,7 @@ class OutpanApi(object):
         response = requests.get(full_url, params=params)
         return _check_request_status(response)
 
-    @create_parser(Self, str, str, params_delim="--")
+    @create_parser(Self, str, str, params_delim="--", name="add_edit_name")
     def add_edit_product_name(self, barcode, name):
         """Add or Edit the name of the product specify by the barcode.
 
@@ -107,7 +107,7 @@ class OutpanApi(object):
         response = requests.get(full_url, params=params)
         return _check_request_status(response)
 
-    @create_parser(Self, str, str, str, params_delim="--")
+    @create_parser(Self, str, str, str, params_delim="--", name="add_edit_attr")
     def add_edit_product_attribute(self, barcode, attr_name, attr_value):
         """Add or edit an attribute to the product defined by the barcode.
 
