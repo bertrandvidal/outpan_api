@@ -7,7 +7,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst'), "r") as readme_
 
 setup(
     name = "outpan",
-    version = "0.1.3",
+    version = "0.1.4",
     description = "Easily use Outpan.com API to get product info from their barcode",
     long_description = readme,
     py_modules = ["outpan"],
@@ -24,6 +24,6 @@ setup(
     ],
     install_requires = [
         "requests",
-        "parse_this",
+        "parse_this>=0.4.0",
     ],
 )
