@@ -31,9 +31,9 @@ def _check_request_status(response):
         return data
 
 
-@parse_class
+@parse_class(description="Simply access the outpan.com API with your api key.")
 class OutpanApi(object):
-    """Access the Outpan API.
+    """Provides a simple way to access the outpan.com API.
 
     Usage:
         from outpan import OutpanAPI
@@ -136,9 +136,10 @@ if __name__ == "__main__":
     if namespace.method == "get-product":
         print(outpan_api.get_product(namespace.barcode))
     if namespace.method == "add-edit-product-name":
-        print(outpan_api.add_edit_product_name(namespace.barcode,
-                                               namespace.name))
+        outpan_api.add_edit_product_name(namespace.barcode,namespace.name)
+        print("SUCCESS")
     if namespace.method == "add-edit-product-attribute":
-        print(outpan_api.add_edit_product_attribute(namespace.barcode,
-                                                    namespace.attr_name,
-                                                    namespace.attr_value))
+        outpan_api.add_edit_product_attribute(namespace.barcode,
+                                              namespace.attr_name,
+                                              namespace.attr_value)
+        print("SUCCESS")
