@@ -93,9 +93,9 @@ will give you the help message to know how to use it.
 A quick overview of the three methods we've already talked about:
 
 ```bash
-python outpan.py 123456789 add-edit-product-name 0000000000000 new_product
+python outpan.py 123456789 add-edit-name 0000000000000 new_product
 python outpan.py 123456789 get-product 0000000000000
-python outpan.py 123456789 add-edit-product-attribute 0000000000000 Origin France
+python outpan.py 123456789 add-edit-attr 0000000000000 Origin France
 ```
 
 These three command lines use the (fake) API key 123456789 to

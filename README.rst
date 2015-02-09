@@ -102,9 +102,9 @@ A quick overview of the three methods we've already talked about:
 
 .. code:: bash
 
-    python outpan.py 123456789 add-edit-product-name 0000000000000 new_product
+    python outpan.py 123456789 add-edit-name 0000000000000 new_product
     python outpan.py 123456789 get-product 0000000000000
-    python outpan.py 123456789 add-edit-product-attribute 0000000000000 Origin France
+    python outpan.py 123456789 add-edit-attr 0000000000000 Origin France
 
 These three command lines use the (fake) API key 123456789 to 1 Create a
 new product with barcode='0000000000000' and name='new\_product' 2
