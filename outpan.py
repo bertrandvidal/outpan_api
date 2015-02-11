@@ -131,15 +131,5 @@ class OutpanApi(object):
 
 
 if __name__ == "__main__":
-    namespace = OutpanApi.parser.parse_args()
-    outpan_api = OutpanApi(namespace.api_key)
-    if namespace.method == "get-product":
-        print(outpan_api.get_product(namespace.barcode))
-    if namespace.method == "add-edit-product-name":
-        outpan_api.add_edit_product_name(namespace.barcode,namespace.name)
-        print("SUCCESS")
-    if namespace.method == "add-edit-product-attribute":
-        outpan_api.add_edit_product_attribute(namespace.barcode,
-                                              namespace.attr_name,
-                                              namespace.attr_value)
-        print("SUCCESS")
+    result = OutpanApi.parser.call()
+    print(result if result else "SUCCESS")
