@@ -24,6 +24,6 @@ setup(
     ],
     install_requires = [
         "requests",
-        "parse_this>=0.4.0",
+        "parse_this>=1.0.0",
     ],
 )
