@@ -1,3 +1,4 @@
+from __future__ import print_function
 import requests
 
 from parse_this import create_parser, Self, parse_class
@@ -130,5 +131,5 @@ class OutpanApi(object):
 
 
 if __name__ == "__main__":
-    result = OutpanApi.parser.call()
-    print(result if result else "SUCCESS")
+    RESULT = OutpanApi.parser.call()
+    print(RESULT if RESULT else "SUCCESS")
