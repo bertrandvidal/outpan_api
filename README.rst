@@ -1,7 +1,7 @@
 Outpan.com API
 ==============
 
-|PyPI latest version badge|
+|PyPI latest version badge|\ |Code health|
 
 Python client for the `Outpan.com
 API <http://www.outpan.com/developers.php>`__
@@ -128,3 +128,5 @@ or using ``easy_install``:
 
 .. |PyPI latest version badge| image:: https://badge.fury.io/py/outpan.svg
    :target: https://pypi.python.org/pypi/outpan
+.. |Code health| image:: https://landscape.io/github/bertrandvidal/outpan_api/master/landscape.png
+   :target: https://landscape.io/github/bertrandvidal/outpan_api/master

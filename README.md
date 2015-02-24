@@ -1,7 +1,7 @@
 Outpan.com API
 ==============
 
-[![PyPI latest version badge][pypi_version]][pypi_link]
+[![PyPI latest version badge][pypi_version]][pypi_link][![Code health][landscape]][landscape_link]
 
 Python client for the [Outpan.com API][outpan_api]
 
@@ -124,3 +124,5 @@ easy_install outpan
 [outpan_register]: http://www.outpan.com/index.php
 [pypi_link]: https://pypi.python.org/pypi/outpan "outpan on PyPI"
 [pypi_version]: https://badge.fury.io/py/outpan.svg "PyPI latest version"
+[landscape_link]: https://landscape.io/github/bertrandvidal/outpan_api/master "parse_this on Landscape"
+[landscape]: https://landscape.io/github/bertrandvidal/outpan_api/master/landscape.png "Code health"
