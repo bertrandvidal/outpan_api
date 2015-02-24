@@ -1,4 +1,3 @@
-from argparse import ArgumentParser
 import requests
 
 from parse_this import create_parser, Self, parse_class
@@ -66,7 +65,7 @@ class OutpanApi(object):
         Args:
             resource -- path to the resource you want to query
         """
-        return "%s/%s" % (self.__class__._API_URL, resource)
+        return "%s/%s" % (self._API_URL, resource)
 
     @create_parser(Self, str, params_delim="--")
     def get_product(self, barcode):
