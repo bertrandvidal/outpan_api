@@ -43,11 +43,11 @@ class OutpanApi(object):
 
     _API_URL = "http://www.outpan.com/api"
 
-    @create_parser(Self, str)
+    @create_parser(Self, str, delimiter_chars="--")
     def __init__(self, api_key):
         """
         Args:
-            api_key -- the api key provided by outpan when you register
+            api_key -- the api key provided by outpan when you registered
         """
         self._api_key = api_key
 
@@ -68,7 +68,7 @@ class OutpanApi(object):
         """
         return "%s/%s" % (self._API_URL, resource)
 
-    @create_parser(Self, str, params_delim="--")
+    @create_parser(Self, str, delimiter_chars="--")
     def get_product(self, barcode):
         """Returns the product data specified by the barcode.
 
@@ -85,7 +85,7 @@ class OutpanApi(object):
         response = requests.get(full_url, params=params)
         return _check_request_status(response)
 
-    @create_parser(Self, str, str, params_delim="--", name="add_edit_name")
+    @create_parser(Self, str, str, delimiter_chars="--", name="add_edit_name")
     def add_edit_product_name(self, barcode, name):
         """Add or Edit the name of the product specify by the barcode.
 
@@ -107,7 +107,8 @@ class OutpanApi(object):
         response = requests.get(full_url, params=params)
         return _check_request_status(response)
 
-    @create_parser(Self, str, str, str, params_delim="--", name="add_edit_attr")
+    @create_parser(Self, str, str, str, delimiter_chars="--",
+                   name="add_edit_attr")
     def add_edit_product_attribute(self, barcode, attr_name, attr_value):
         """Add or edit an attribute to the product defined by the barcode.
 
