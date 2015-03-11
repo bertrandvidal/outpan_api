@@ -41,7 +41,7 @@ class OutpanApi(object):
         api.get_product("0078915030900")
     """
 
-    _API_URL = "http://www.outpan.com/api"
+    _API_URL = "https://www.outpan.com/api"
 
     @create_parser(Self, str, delimiter_chars="--")
     def __init__(self, api_key):
