@@ -32,12 +32,12 @@ def _check_request_status(response):
 
 
 @parse_class(description="Simply access the outpan.com API with your api key.")
-class OutpanApi(object):
+class OutpanApiBeta(object):
     """Provides a simple way to access the outpan.com API.
 
     Usage:
-        from outpan import OutpanAPI
-        api = OutpanAPI(<you_api_key>)
+        from outpan import OutpanApiBeta
+        api = OutpanApiBeta(<you_api_key>)
         api.get_product("0078915030900")
     """
 
@@ -132,5 +132,5 @@ class OutpanApi(object):
 
 
 if __name__ == "__main__":
-    RESULT = OutpanApi.parser.call()
+    RESULT = OutpanApiBeta.parser.call()
     print(RESULT if RESULT else "SUCCESS")
