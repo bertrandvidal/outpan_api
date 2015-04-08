@@ -1,7 +1,10 @@
 from __future__ import print_function
+import warnings
 import requests
 
 from parse_this import create_parser, Self, parse_class
+
+warnings.simplefilter('always', DeprecationWarning)
 
 
 class OutpanException(Exception):
@@ -50,6 +53,8 @@ class OutpanApiBeta(object):
             api_key -- the api key provided by outpan when you registered
         """
         self._api_key = api_key
+        warnings.warn("The Beta OutpanApi will be deprecated on July 1, 2015",
+                      DeprecationWarning)
 
     def _get_params(self, params):
         """Returns the given parameters extended with the api key parameter.
