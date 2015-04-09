@@ -49,6 +49,16 @@ class OutpanApi(object):
         self._auth_header = {"Authorization": "Basic %s"
                              % encoded_key.decode("ascii")}
 
+    def _get_resource(self, resource_path):
+        """Send a GET request to a specific path.
+
+        Args:
+            resource_path -- the API path to query
+        """
+        response = requests.get(self._API_URL + "/" + resource_path,
+                                headers=self._auth_header)
+        return _check_request_status(response)
+
 
 @parse_class(description="Simply access the outpan.com API with your api key.")
 class OutpanApiBeta(object):
