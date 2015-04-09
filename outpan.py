@@ -59,6 +59,15 @@ class OutpanApi(object):
                                 headers=self._auth_header)
         return _check_request_status(response)
 
+    def get_product(self, barcode):
+        """Returns the name, attributes, images and videos of the product
+        identified by the barcode.
+
+        Args:
+            barcode -- the barcode/GTIN of the product
+        """
+        return self._get_resource(barcode)
+
 
 @parse_class(description="Simply access the outpan.com API with your api key.")
 class OutpanApiBeta(object):
