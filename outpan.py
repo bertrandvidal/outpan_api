@@ -68,6 +68,39 @@ class OutpanApi(object):
         """
         return self._get_resource(barcode)
 
+    def name(self, barcode):
+        """Returns a dict containing the barcode and name of the product.
+
+        Args:
+            barcode -- the barcode of the product
+        """
+        return self._get_resource("%s/name" % barcode)
+
+    def attributes(self, barcode):
+        """Returns a dict containing the barcode and attributes of the product.
+
+        Args:
+            barcode -- the barcode of the product
+        """
+        return self._get_resource("%s/attributes" % barcode)
+
+    def images(self, barcode):
+        """Returns a dict containing the barcode and image links of the product.
+
+        Args:
+            barcode -- the barcode of the product
+        """
+        return self._get_resource("%s/images" % barcode)
+
+    def videos(self, barcode):
+        """Returns a dict containing the barcode and videos links of the
+        product.
+
+        Args:
+            barcode -- the barcode of the product
+        """
+        return self._get_resource("%s/videos" % barcode)
+
 
 @parse_class(description="Simply access the outpan.com API with your api key.")
 class OutpanApiBeta(object):
