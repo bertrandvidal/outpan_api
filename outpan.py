@@ -1,4 +1,5 @@
 from __future__ import print_function
+import base64
 import warnings
 import requests
 
@@ -32,6 +33,21 @@ def _check_request_status(response):
             raise OutpanException("%(message)s - code: %(code)s"
                                   % data["error"])
         return data
+
+
+class OutpanApi(object):
+    """Access outpan.com v1 API with your api key."""
+
+    _API_URL = "https://api.outpan.com/v1/products/"
+
+    def __init__(self, api_key):
+        """
+        Args:
+            api_key -- the api key provided by outpan when you register
+        """
+        encoded_key = base64.encodestring(bytearray("%s:" % api_key, "utf-8"))
+        self._auth_header = {"Authorization": "Basic %s"
+                             % encoded_key.decode("ascii")}
 
 
 @parse_class(description="Simply access the outpan.com API with your api key.")
