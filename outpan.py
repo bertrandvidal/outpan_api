@@ -5,8 +5,6 @@ import requests
 
 from parse_this import create_parser, Self, parse_class
 
-warnings.simplefilter('always', DeprecationWarning)
-
 
 class OutpanException(Exception):
     """Exception raised when a requests fails."""
@@ -126,6 +124,7 @@ class OutpanApiBeta(object):
             api_key -- the api key provided by outpan when you registered
         """
         self._api_key = api_key
+        warnings.simplefilter('always', DeprecationWarning)
         warnings.warn("The Beta OutpanApi will be deprecated on July 1, 2015",
                       DeprecationWarning)
 
