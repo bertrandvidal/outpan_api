@@ -109,7 +109,6 @@ class OutpanApi(object):
         return self._get_resource("%s/videos" % barcode)
 
 
-@parse_class(description="Simply access the outpan.com API with your api key.")
 class OutpanApiBeta(object):
     """Provides a simple way to access the outpan.com API.
 
@@ -121,7 +120,6 @@ class OutpanApiBeta(object):
 
     _API_URL = "https://www.outpan.com/api"
 
-    @create_parser(Self, str, delimiter_chars="--")
     def __init__(self, api_key):
         """
         Args:
@@ -148,7 +146,6 @@ class OutpanApiBeta(object):
         """
         return "%s/%s" % (self._API_URL, resource)
 
-    @create_parser(Self, str, delimiter_chars="--")
     def get_product(self, barcode):
         """Returns the product data specified by the barcode.
 
@@ -165,7 +162,6 @@ class OutpanApiBeta(object):
         response = requests.get(full_url, params=params)
         return _check_request_status(response)
 
-    @create_parser(Self, str, str, delimiter_chars="--", name="add_edit_name")
     def add_edit_product_name(self, barcode, name):
         """Add or Edit the name of the product specify by the barcode.
 
@@ -187,8 +183,6 @@ class OutpanApiBeta(object):
         response = requests.get(full_url, params=params)
         return _check_request_status(response)
 
-    @create_parser(Self, str, str, str, delimiter_chars="--",
-                   name="add_edit_attr")
     def add_edit_product_attribute(self, barcode, attr_name, attr_value):
         """Add or edit an attribute to the product defined by the barcode.
 
