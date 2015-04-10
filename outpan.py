@@ -35,11 +35,13 @@ def _check_request_status(response):
         return data
 
 
+@parse_class(description="Simply access the outpan.com API with your api key.")
 class OutpanApi(object):
     """Access outpan.com v1 API with your api key."""
 
     _API_URL = "https://api.outpan.com/v1/products/"
 
+    @create_parser(Self, str, delimiter_chars="--")
     def __init__(self, api_key):
         """
         Args:
@@ -59,6 +61,7 @@ class OutpanApi(object):
                                 headers=self._auth_header)
         return _check_request_status(response)
 
+    @create_parser(Self, str, delimiter_chars="--")
     def get_product(self, barcode):
         """Returns the name, attributes, images and videos of the product
         identified by the barcode.
@@ -68,6 +71,7 @@ class OutpanApi(object):
         """
         return self._get_resource(barcode)
 
+    @create_parser(Self, str, delimiter_chars="--")
     def name(self, barcode):
         """Returns a dict containing the barcode and name of the product.
 
@@ -76,6 +80,7 @@ class OutpanApi(object):
         """
         return self._get_resource("%s/name" % barcode)
 
+    @create_parser(Self, str, delimiter_chars="--")
     def attributes(self, barcode):
         """Returns a dict containing the barcode and attributes of the product.
 
@@ -84,6 +89,7 @@ class OutpanApi(object):
         """
         return self._get_resource("%s/attributes" % barcode)
 
+    @create_parser(Self, str, delimiter_chars="--")
     def images(self, barcode):
         """Returns a dict containing the barcode and image links of the product.
 
@@ -92,6 +98,7 @@ class OutpanApi(object):
         """
         return self._get_resource("%s/images" % barcode)
 
+    @create_parser(Self, str, delimiter_chars="--")
     def videos(self, barcode):
         """Returns a dict containing the barcode and videos links of the
         product.
@@ -205,5 +212,5 @@ class OutpanApiBeta(object):
 
 
 if __name__ == "__main__":
-    RESULT = OutpanApiBeta.parser.call()
+    RESULT = OutpanApi.parser.call()
     print(RESULT if RESULT else "SUCCESS")
