@@ -10,7 +10,7 @@ with open(README_PATH, "r") as readme_file:
 
 setup(
     name="outpan",
-    version="1.1.0",
+    version="1.1.1",
     description="Easily use Outpan API to get product info from its barcode",
     long_description=README,
     py_modules=["outpan"],
