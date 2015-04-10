@@ -87,11 +87,11 @@ python outpan.py 123456789 videos 0796435419035
 ```
 
 These command lines use the (fake) API key 123456789 to
-  1 Retrieve the full info of product 0796435419035
-  2 Retrieve the name of product 0796435419035
-  3 Retrieve the attributes of product 0796435419035
-  4 Retrieve the image links of product 0796435419035
-  5 Retrieve the video links of product 0796435419035
+  1. Retrieve the full info of product 0796435419035
+  2. Retrieve the name of product 0796435419035
+  3. Retrieve the attributes of product 0796435419035
+  4. Retrieve the image links of product 0796435419035
+  5. Retrieve the video links of product 0796435419035
 
 
 Beta API - available until July 1, 2015
