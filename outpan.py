@@ -2,6 +2,7 @@ from __future__ import print_function
 import base64
 import warnings
 import requests
+from pprint import pprint
 
 from parse_this import create_parser, Self, parse_class
 
@@ -206,4 +207,4 @@ class OutpanApiBeta(object):
 
 if __name__ == "__main__":
     RESULT = OutpanApi.parser.call()
-    print(RESULT if RESULT else "SUCCESS")
+    pprint(RESULT if RESULT else "SUCCESS")
