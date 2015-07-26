@@ -99,14 +99,6 @@ full info of product 0796435419035 2. Retrieve the name of product
 Retrieve the image links of product 0796435419035 5. Retrieve the video
 links of product 0796435419035
 
-Beta API - available until July 1, 2015
----------------------------------------
-
-`The ``beta`` version of the
-API <https://www.outpan.com/developers-legacy.php>`__ is still available
-via the ``OutpanApiBeta`` class that can be used in the same way as the
-previous class.
-
 Creating or editing a product's name
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

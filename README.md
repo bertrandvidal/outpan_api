@@ -94,13 +94,6 @@ These command lines use the (fake) API key 123456789 to
   5. Retrieve the video links of product 0796435419035
 
 
-Beta API - available until July 1, 2015
----------------------------------------
-
-[The `beta` version of the API ][beta_api] is still available via the
-`OutpanApiBeta` class that can be used in the same way as the previous class.
-
-
 ### Creating or editing a product's name
 
 If you want to create a new object or edit an existing product you can use the
@@ -144,7 +137,6 @@ easy_install outpan
 
 [parse_this_link]: https://github.com/bertrandvidal/parse_this
 [outpan_api]: http://www.outpan.com/developers.php
-[beta_api]: https://www.outpan.com/developers-legacy.php
 [outpan_register]: http://www.outpan.com/index.php
 [pypi_link]: https://pypi.python.org/pypi/outpan "outpan on PyPI"
 [pypi_version]: https://badge.fury.io/py/outpan.svg "PyPI latest version"
