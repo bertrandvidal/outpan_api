@@ -29,4 +29,9 @@ setup(
         "requests",
         "parse_this>=1.0.3",
     ],
+    entry_points={
+        "console_scripts": [
+            "outpan = outpan:run_cli",
+        ],
+    },
 )
