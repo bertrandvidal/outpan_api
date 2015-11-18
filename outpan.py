@@ -33,6 +33,27 @@ def _check_request_status(response):
         return data
 
 
+class OutpanApi(object):
+    """Access outpan.com v2 API with your api key."""
+
+    def __init__(self, api_key):
+        """
+        Args:
+            api_key -- the api key provided by outpan when you register
+        """
+        self._api_key = api_key
+
+    def get_product(self, barcode):
+        """Return all the info about the given barcode.
+
+        Args:
+            barcode -- the barcode/GTIN of the product
+        """
+        response = requests.get("https://api.outpan.com/v2/products/%s?apikey=%s"
+                               % (barcode, self._api_key))
+        return _check_request_status(response)
+
+
 @parse_class(description="Simply access the outpan.com API with your api key.")
 class OutpanApiV1(object):
     """Access outpan.com v1 API with your api key."""
