@@ -10,7 +10,7 @@ with open(README_PATH, "r") as readme_file:
 
 setup(
     name="outpan",
-    version="1.2.0",
+    version="2.0",
     description="Easily use Outpan API to get product info from its barcode",
     long_description=README,
     py_modules=["outpan"],
@@ -32,6 +32,7 @@ setup(
     entry_points={
         "console_scripts": [
             "outpan = outpan:run_cli",
+            "outpan-v1 = outpan:run_cli_v1",
         ],
     },
 )

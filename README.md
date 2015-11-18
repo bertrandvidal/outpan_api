@@ -53,17 +53,23 @@ This call will return the product's data as a `dict`:
             'https://outpan-images.s3.amazonaws.com/pjkhqlbgwl-0078915030900.mp4']}
 ```
 
-The `v1` API allows you to retrieve specific attributes of a product using the
-following methods:
+Accessing `v1` API
+------------------
+
+Available until Jan. 1st 2016, the `v1` API allows you to retrieve specific
+attributes of a product using the methods list below:
 
 ```python
+from outpan import OutpanApiV1  # Note that we are importing a different class
+
+api = OutpanApiV1(my_api_key)
 api.name("078915030900")
 api.attributes("078915030900")
 api.images("078915030900")
 api.videos("078915030900")
 ```
 
-The output of these calls is the `JSON` as returned by the API.
+The output of these calls is the `dict` as returned by the API.
 
 From the command line
 ---------------------
@@ -79,7 +85,7 @@ will give you the help message to know how to use it.
 A quick overview of the previous methods we've already talked about:
 
 ```bash
-python outpan.py 123456789 get-product 0796435419035
+python outpan.py 123456789 get-product 0796435419035  # Available for v2
 python outpan.py 123456789 name 0796435419035
 python outpan.py 123456789 attributes 0796435419035
 python outpan.py 123456789 images 0796435419035
@@ -87,7 +93,7 @@ python outpan.py 123456789 videos 0796435419035
 ```
 
 These command lines use the (fake) API key 123456789 to
-  1. Retrieve the full info of product 0796435419035
+  1. Retrieve the full info of product 0796435419035 - only command available for v2
   2. Retrieve the name of product 0796435419035
   3. Retrieve the attributes of product 0796435419035
   4. Retrieve the image links of product 0796435419035

@@ -33,8 +33,32 @@ def _check_request_status(response):
         return data
 
 
-@parse_class(description="Simply access the outpan.com API with your api key.")
+@parse_class(description="Simply access the outpan.com API with you api key.")
 class OutpanApi(object):
+    """Access outpan.com v2 API with your api key."""
+
+    @create_parser(Self, str, delimiter_chars="--")
+    def __init__(self, api_key):
+        """
+        Args:
+            api_key -- the api key provided by outpan when you register
+        """
+        self._api_key = api_key
+
+    @create_parser(Self, str, delimiter_chars="--")
+    def get_product(self, barcode):
+        """Return all the info about the given barcode.
+
+        Args:
+            barcode -- the barcode/GTIN of the product
+        """
+        response = requests.get("https://api.outpan.com/v2/products/%s?apikey=%s"
+                               % (barcode, self._api_key))
+        return _check_request_status(response)
+
+
+@parse_class(description="Simply access the outpan.com API with your api key.")
+class OutpanApiV1(object):
     """Access outpan.com v1 API with your api key."""
 
     _API_URL = "https://api.outpan.com/v1/products/"
@@ -105,6 +129,11 @@ class OutpanApi(object):
             barcode -- the barcode of the product
         """
         return self._get_resource("%s/videos" % barcode)
+
+
+def run_cli_v1():
+    result = OutpanApiV1.parser.call()
+    pprint(result if result else "SUCCESS")
 
 
 def run_cli():
