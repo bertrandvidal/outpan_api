@@ -34,7 +34,7 @@ def _check_request_status(response):
 
 
 @parse_class(description="Simply access the outpan.com API with your api key.")
-class OutpanApi(object):
+class OutpanApiV1(object):
     """Access outpan.com v1 API with your api key."""
 
     _API_URL = "https://api.outpan.com/v1/products/"
@@ -108,10 +108,10 @@ class OutpanApi(object):
 
 
 def run_cli():
-    result = OutpanApi.parser.call()
+    result = OutpanApiV1.parser.call()
     pprint(result if result else "SUCCESS")
 
 
 if __name__ == "__main__":
-    RESULT = OutpanApi.parser.call()
+    RESULT = OutpanApiV1.parser.call()
     pprint(RESULT if RESULT else "SUCCESS")
