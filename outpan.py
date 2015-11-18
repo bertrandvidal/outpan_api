@@ -132,10 +132,10 @@ class OutpanApiV1(object):
 
 
 def run_cli():
-    result = OutpanApiV1.parser.call()
+    result = OutpanApi.parser.call()
     pprint(result if result else "SUCCESS")
 
 
 if __name__ == "__main__":
-    RESULT = OutpanApiV1.parser.call()
+    RESULT = OutpanApi.parser.call()
     pprint(RESULT if RESULT else "SUCCESS")
