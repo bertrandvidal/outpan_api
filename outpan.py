@@ -131,6 +131,11 @@ class OutpanApiV1(object):
         return self._get_resource("%s/videos" % barcode)
 
 
+def run_cli_v1():
+    result = OutpanApiV1.parser.call()
+    pprint(result if result else "SUCCESS")
+
+
 def run_cli():
     result = OutpanApi.parser.call()
     pprint(result if result else "SUCCESS")

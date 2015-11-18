@@ -32,6 +32,7 @@ setup(
     entry_points={
         "console_scripts": [
             "outpan = outpan:run_cli",
+            "outpan-v1 = outpan:run_cli_v1",
         ],
     },
 )
