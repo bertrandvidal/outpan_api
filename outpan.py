@@ -33,9 +33,11 @@ def _check_request_status(response):
         return data
 
 
+@parse_class(description="Simply access the outpan.com API with you api key.")
 class OutpanApi(object):
     """Access outpan.com v2 API with your api key."""
 
+    @create_parser(Self, str, delimiter_chars="--")
     def __init__(self, api_key):
         """
         Args:
@@ -43,6 +45,7 @@ class OutpanApi(object):
         """
         self._api_key = api_key
 
+    @create_parser(Self, str, delimiter_chars="--")
     def get_product(self, barcode):
         """Return all the info about the given barcode.
 
